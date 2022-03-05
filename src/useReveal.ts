@@ -9,7 +9,7 @@ import 'reveal.js/dist/theme/black.css';
 import 'reveal.js/plugin/highlight/monokai.css';
 
 export default function useReveal() {
-  const store: Store = inject('store');
+  const store: Store = inject('store')!;
 
   const isLoaded = ref(false);
   let reveal = new Reveal({
@@ -25,8 +25,8 @@ export default function useReveal() {
 
   reveal.initialize().then(() => {
     isLoaded.value = true;
-    store.actions.setReveal(reveal);
-    store.actions.setRevealLoaded(true);
+    store.setReveal(reveal);
+    store.setRevealLoaded(true);
   });
 
   return {

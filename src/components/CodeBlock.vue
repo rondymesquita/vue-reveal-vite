@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, nextTick, inject, onMounted, watch } from "vue";
-import 'reveal.js/dist/reveal.css';
-import 'reveal.js/dist/theme/black.css';
-import 'reveal.js/plugin/highlight/monokai.css';
+import { Store } from '../store';
 
 const props = defineProps({
   file: {
@@ -26,7 +24,7 @@ fetch(path)
   });
 });
 
-const store = inject('store')
+const store = inject<Store>('store')!
 
 watch([code, () => store.state.isRevealLoaded], ([code, isRevealLoaded]) => {
   if (!code) return
@@ -37,17 +35,6 @@ watch([code, () => store.state.isRevealLoaded], ([code, isRevealLoaded]) => {
     highlight.highlightBlock( codeElement.value );
   })
 });
-
-onMounted(() => {
-
-  // console.log('injected', store);
-
-  // const highlight = store.state.reveal.getPlugin( 'highlight' );
-  // console.log(highlight);
-
-  // highlight.highlightBlock( /* code block element to highlight */ );
-})
-
 
 </script>
 

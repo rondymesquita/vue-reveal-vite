@@ -1,29 +1,27 @@
 import { reactive, readonly } from 'vue';
 
-export interface Store {
-  actions: Array<Function>;
+interface State {
+  reveal: any;
+  isRevealLoaded: boolean;
+}
+class Store {
+  state: State;
+
+  constructor() {
+    this.state = reactive({
+      reveal: null,
+      isRevealLoaded: false,
+    });
+  }
+
+  setReveal(value: any) {
+    this.state.reveal = value;
+  }
+  setRevealLoaded(value: boolean) {
+    this.state.isRevealLoaded = value;
+  }
 }
 
-const state = reactive({
-  reveal: null,
-  isRevealLoaded: false,
-  fulano: 'sicrano',
-});
-
-const actions = {
-  setReveal: (value: any) => {
-    state.reveal = value;
-  },
-
-  setFulano: (value: string) => {
-    state.fulano = value;
-  },
-  setRevealLoaded: (value: boolean) => {
-    state.isRevealLoaded = value;
-  },
-};
-
-export default {
-  state: readonly(state),
-  actions,
-};
+const store = new Store();
+export default store;
+export { Store };
