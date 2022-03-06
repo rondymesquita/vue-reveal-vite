@@ -11,26 +11,18 @@ const { file } = props;
 const code = ref<null | string>(null);
 const codeElement = ref();
 
-const path = import.meta.env.DEV
-  ? `../public/code/${file}`
-  : `/code/${file}.txt`;
-
-
-fetch(path)
-.then((response) => response.text())
-.then((codeAsString) => {
-  nextTick(() => {
-    code.value = codeAsString;
-  });
-});
 
 const store = inject<Store>('store')!
 
-watch([code, () => store.state.isRevealLoaded], ([code, isRevealLoaded]) => {
-  if (!code) return
-  console.log('watch', code, isRevealLoaded, store.state.reveal)
+console.log(file, store.state.modules)
+code.value = store.state.modules[file]
+
+watch(() => store.state.isRevealLoaded, (isRevealLoaded) => {
+  console.log('isRevealLoaded', isRevealLoaded, code.value);
+
+  // console.log('watch', code, isRevealLoaded, store.state.reveal)
   const highlight = store.state.reveal.getPlugin('highlight');
-  console.log(highlight, codeElement.value);
+  // console.log(highlight, codeElement.value);
   nextTick(() => {
     highlight.highlightBlock( codeElement.value );
   })
@@ -41,10 +33,11 @@ watch([code, () => store.state.isRevealLoaded], ([code, isRevealLoaded]) => {
 <template>
   <div>
     <pre><code ref="codeElement" data-line-numbers data-trim data-noescape>{{code}}</code></pre>
-      <!-- <textarea data-template>
-      {{code}}
-    </textarea> -->
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.hljs-ln-line.hljs-ln-numbers {
+  display: none !important;
+}
+</style>

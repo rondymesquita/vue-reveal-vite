@@ -2,17 +2,22 @@
 import { onMounted } from 'vue';
 
 import useReveal from './useReveal';
+import useFileImporter from './useFileImporter';
 import HelloWorld from './components/HelloWorld.vue'
 import CodeBlock from './components/CodeBlock.vue'
 
+const {isLoaded} = useFileImporter()
+
 onMounted(() => {
   useReveal()
+
 });
 </script>
 
 <template>
     <div class="reveal">
       <div class="slides">
+        <Cover/>
         <section>
           <h1>Slide 1</h1>
           <CodeBlock file="test.java"/>
@@ -22,8 +27,8 @@ onMounted(() => {
           <CodeBlock file="test.ts"/>
         </section>
         <section>
+          <h1>Slide 3</h1>
           <HelloWorld msg="Rondy"/>
-          Slide 1
           <pre><code data-line-numbers data-trim data-noescape>
             interface Greeter {
               greet(): void;
@@ -44,10 +49,20 @@ onMounted(() => {
             let g = new Greet("world");
           </code></pre>
         </section>
-        <section>Slide 2</section>
+        <section data-markdown="../public/markdown.md"
+                data-separator="^\n\n\n"
+                data-separator-vertical="^\n\n"
+                data-separator-notes="^Note:"
+                data-charset="iso-8859-15">
+            <!--
+                Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
+                For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
+            -->
+        </section>
         <section data-markdown>
           <textarea data-template>
-              ## Slide 1
+              ## Slide 4
+              <CodeBlock file="test.ts"/>
               A paragraph with some text and a [link](http://hakim.se).
               ```js
                 console.log('here')
