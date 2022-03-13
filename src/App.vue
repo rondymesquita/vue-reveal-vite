@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 
-import useReveal from './useReveal';
-import useFileImporter from './useFileImporter';
+// import useReveal from './useReveal';
+// import useFileImporter from './useFileImporter';
 import HelloWorld from './components/HelloWorld.vue'
-import CodeBlock from './components/CodeBlock.vue'
 
-const {isLoaded} = useFileImporter()
+// const {isLoaded} = useFileImporter()
 
+
+console.log('app created')
 onMounted(() => {
-  useReveal()
+  console.log('app mounted')
+  // useReveal()
 
 });
 </script>
@@ -17,7 +19,7 @@ onMounted(() => {
 <template>
     <div class="reveal">
       <div class="slides">
-        <Cover/>
+        <!-- <Cover/> -->
         <section>
           <h1>Slide 1</h1>
           <CodeBlock file="test.java"/>
