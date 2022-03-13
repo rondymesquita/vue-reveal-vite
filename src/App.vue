@@ -1,24 +1,16 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 
-// import useReveal from './useReveal';
-// import useFileImporter from './useFileImporter';
 import HelloWorld from './components/HelloWorld.vue'
-
-// const {isLoaded} = useFileImporter()
-
 
 console.log('app created')
 onMounted(() => {
   console.log('app mounted')
-  // useReveal()
-
 });
 </script>
 
 <template>
-    <div class="reveal">
-      <div class="slides">
+    <Reveal>
         <!-- <Cover/> -->
         <section>
           <h1>Slide 1</h1>
@@ -77,8 +69,7 @@ onMounted(() => {
             </textarea
           >
         </section>
-      </div>
-    </div>
+    </Reveal>
 </template>
 
 <style>
