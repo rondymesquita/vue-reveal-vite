@@ -4,13 +4,10 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    CodeBlock: typeof import('./src/components/CodeBlock.vue')['default']
-    CodeBlockShiki: typeof import('./src/components/CodeBlockShiki.vue')['default']
     Cover: typeof import('./src/components/Cover.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Markdown: typeof import('./src/components/markdown.md')['default']
     Slide: typeof import('./src/components/Slide.vue')['default']
-    Slides: typeof import('./src/components/Slides.vue')['default']
   }
 }
 

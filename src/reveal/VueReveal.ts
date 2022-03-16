@@ -1,10 +1,6 @@
 import { ref, nextTick } from 'vue';
+//@ts-ignore
 import Reveal from 'reveal.js';
-import * as RevealMarkdown from 'reveal.js/plugin/markdown/markdown.js';
-import * as RevealHighlight from 'reveal.js/plugin/highlight/highlight.js';
-import 'reveal.js/dist/reveal.css';
-import 'reveal.js/dist/theme/black.css';
-import 'reveal.js/plugin/highlight/monokai.css';
 
 export const VueReveal = {
   install: async (app: any, options: any) => {

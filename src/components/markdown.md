@@ -1,6 +1,7 @@
 ## Markdown
 
-<CodeBlock file="test.ts"/>
+<!-- <CodeBlock file="test.ts"/> -->
+
 ```js
-	<CodeBlock file="test.ts"/>
+<CodeBlock file="test.ts" />
 ```

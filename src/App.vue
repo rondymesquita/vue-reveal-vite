@@ -14,6 +14,7 @@ onMounted(() => {
         <!-- <Cover/> -->
         <section>
           <h1>Slide 1</h1>
+          <Markdown/>
           <CodeBlock file="test.java"/>
         </section>
         <section>
